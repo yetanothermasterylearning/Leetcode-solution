@@ -1,13 +1,15 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        // bruteforce approach
+        // optimum solution
+        Map<Integer,Integer> map = new HashMap<Integer,Integer>();
         for (int i=0;i<nums.length;i++) {
-            for (int j=i+1;j<nums.length;j++) {
-                if (nums[i] + nums[j] == target) {
-                    return new int[] {i,j};
-                }
+            if (map.containsKey(nums[i])) {
+                int index = map.get(nums[i]);
+                return new int[] {index,i};
+            } else {
+                map.put(target-nums[i], i);
             }
         }
-        return new int[0];
+        return null;
     }
 }
