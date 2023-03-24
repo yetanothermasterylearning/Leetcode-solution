@@ -6,23 +6,14 @@ class Solution {
             return false;
         }
         
-        String input = Integer.toString(x);
-        String reverseString = reverse(input);
-        
-        return input.equals(reverseString);
-    }
-    
-    private String reverse(String input) {
-        char[] inputChar = input.toCharArray();
-        int n = inputChar.length;
-        
-        for(int i=0;i<inputChar.length/2;i++) {
-            char temp = inputChar[i];
-            inputChar[i] = inputChar[n-1];
-            inputChar[n-1] = temp;
-            n--;
+        int n = x;
+        int result = 0;
+        while(n != 0) {
+            int digit = n%10;
+            n = n/10;
+            result = result*10+digit;
+            //System.out.println(digit +","+ result);
         }
-        
-        return new String(inputChar);
+        return x == result;
     }
 }
